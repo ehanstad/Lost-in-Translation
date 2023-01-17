@@ -1,16 +1,18 @@
 import './App.css';
-import store from './store.js';
+import Login from './components/Login';
+import ErrorPage from './components/ErrorPage';
 
-import { Provider } from 'react-redux';
+
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
-    <Provider store={store}>
-      <div className="App">
-        <header className="App-header">
-        </header>
-      </div>
-    </Provider>
+      <Router>
+        <Routes>
+            <Route path="/" element={<Login />} />
+            <Route path="*" element={<ErrorPage />} />
+        </Routes>
+      </Router>
   );
 }
 
