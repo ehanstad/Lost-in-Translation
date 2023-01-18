@@ -14,6 +14,5 @@ root.render(
     </Provider>
   </React.StrictMode>
 );
-console.log(App)
 
 reportWebVitals();

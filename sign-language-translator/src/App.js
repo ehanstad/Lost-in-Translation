@@ -1,15 +1,17 @@
 import './App.css';
-import Login from './components/Login';
-import ErrorPage from './components/ErrorPage';
+import LoginPage from './views/LoginPage';
+import TranslatePage from './views/TranslatePage';
+import ErrorPage from './views/ErrorPage';
 
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-function App() {
+const App = () => {
   return (
       <Router>
         <Routes>
-            <Route path="/" element={<Login />} />
+            <Route path="/" element={<LoginPage />} />
+            <Route path="/translate" element={<TranslatePage />} />
             <Route path="*" element={<ErrorPage />} />
         </Routes>
       </Router>
