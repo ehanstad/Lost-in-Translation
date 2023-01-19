@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import LoginPage from './views/LoginPage';
 import TranslatePage from './views/TranslatePage';
 import ErrorPage from './views/ErrorPage';

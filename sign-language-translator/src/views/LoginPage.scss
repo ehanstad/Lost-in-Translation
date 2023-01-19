@@ -1,0 +1,38 @@
+$background-color: #FFC300;
+
+header {
+    border-bottom: 1px solid black;
+    flex: 0.15;
+    background-color: $background-color;
+}
+img {
+    width: 60%;
+    padding-left: 20px;
+}
+#login {
+    display: flex;
+    flex-direction: column;
+    color: white;
+
+    h3 {
+        margin-top: 30px;
+        margin-left: 10px;
+    }
+}
+#login-body {
+    display: flex;
+    flex-direction: row;
+    flex: 0.3;
+    align-items: center;
+    background-color: $background-color;
+}
+#login-img-container {
+    flex: 0.3;
+}
+#login-container {
+    flex: 0.7;
+    h1, h2 {
+        margin-bottom: 20px;
+    }
+}
+

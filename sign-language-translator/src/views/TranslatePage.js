@@ -1,8 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import TranslateForm from '../components/translate/TranslateForm';
+import TranslateDisplay from '../components/translate/TranslateDisplay';
+import TranslateHeader from '../components/translate/TranslateHeader';
+import './TranslatePage.scss';
 
-const TranslatePage = () => {
+const TranslatePage = props => {
+  useEffect(() => {
+    console.log(props);
+  });
+
   return (
-    <div>TranslatePage</div>
+    <div id='translation'>
+      <TranslateHeader />
+      <TranslateForm />
+      <TranslateDisplay />
+    </div>
   )
 }
 

@@ -2,7 +2,7 @@ import React from 'react';
 
 const ErrorPage = () => {
   return (
-    <div>502 Bad gateway</div>
+    <div>404 Not found</div>
   )
 }
 

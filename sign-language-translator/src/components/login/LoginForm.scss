@@ -1,0 +1,27 @@
+form {
+    width: 70%;
+}
+fieldset {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    align-items: space-between;
+    justify-content: center;
+    input {
+        padding-left: 20px;
+    }
+}
+#btn-arrow {
+    
+}
+button {
+    width: 20%;
+    height: 20%;
+    border-style: none;
+    background-color: white;
+}
+button:hover {
+    width: 25%;
+    height: 25%;
+}
