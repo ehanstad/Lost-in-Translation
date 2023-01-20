@@ -1,11 +1,15 @@
-import { USER_LOADING, USER_LOADED } from "../actions/types";
+import { USER_LOADING, USER_LOADED, ADD_TRANSLATION } from "../actions/types";
 
 const initialState = {
-    cookie: {},
     user: {
-        name: "",
+        user: {
+            id: "",
+            name: "",
+            translations: [],
+        },
         isLoading: false,
     },
+    activeTranslation: "",
 }
 
 export default function (state = initialState, action) {
@@ -22,9 +26,14 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 user: {
-                    name: action.payload,
+                    user: action.payload,
                     isLoading: false,
                 }
+            }
+        case ADD_TRANSLATION:
+            return {
+                ...state,
+                activeTranslation: action.payload,
             }
         default:
             return state;

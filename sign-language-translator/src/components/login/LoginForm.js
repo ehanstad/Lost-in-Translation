@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import Cookies from 'universal-cookie';
-import { getUser } from '../../actions/apiActions';
+import { getUser, addUser } from '../../actions/apiActions';
+import { useNavigate } from 'react-router-dom';
 import './LoginForm.scss';
 
 const usernameConfig = {
@@ -12,12 +14,14 @@ const usernameConfig = {
 
 const LoginForm = props => {
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     const allCookies = document.cookie;
     if (allCookies)
-      console.log("COOKIE");
-      //window.location.replace("./translate");
-  });
+      navigate("./translate");
+  },[]);
+
 
   const {
     register,
@@ -27,9 +31,13 @@ const LoginForm = props => {
 
   const onSubmit = data => {
     props.getUser(data.username);
+    console.log(props.user);
+    console.log(data);
+    //if (!props.user.id)
+      //props.addUser(data.username);
     const newCookie = new Cookies();
     newCookie.set("session", data.username, {maxAge: 100});
-    //window.location.replace("./translate");
+    navigate("./translate");
   }
 
   return (
@@ -44,8 +52,16 @@ const LoginForm = props => {
   )
 }
 
+LoginForm.protoTypes = {
+  getUser: PropTypes.func.isRequired,
+  addUser: PropTypes.func.isRequired,
+  user: PropTypes.object,
+}
+
 const mapStateToProps = state => ({
-  user: state.api.user.name,
+  user: state.api.user.user,
 });
 
-export default connect(mapStateToProps, { getUser })(LoginForm);
+const mapDispatchToProps = { getUser, addUser };
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);

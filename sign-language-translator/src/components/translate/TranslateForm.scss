@@ -1,0 +1,10 @@
+$background-color: #FFC75F;
+$copliment-color: #E7B355;
+
+#translate-form {
+    display: flex;
+    flex: 0.3;
+    justify-content: center;
+    align-items: center;
+    background-color: $background-color;
+}
