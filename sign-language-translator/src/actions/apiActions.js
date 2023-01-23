@@ -1,4 +1,4 @@
-import { USER_LOADING, USER_LOADED, ADD_TRANSLATION } from "./types";
+import { USER_LOADING, USER_LOADED, ADD_TRANSLATION, DELETE_TRANSLATIONS } from "./types";
 
 const api_key = process.env.REACT_APP_API_KEY;
 const api_url = process.env.REACT_APP_API_URL;
@@ -90,5 +90,14 @@ export const addTranslation = (translateText, userID) => {
         });
       })
       .catch(error => console.log(error))
+  }
+}
+
+export const deleteTranslations = () => {
+  console.log("api_actions");
+  return function(dispatch) {
+    dispatch({
+      type: DELETE_TRANSLATIONS,
+    });
   }
 }

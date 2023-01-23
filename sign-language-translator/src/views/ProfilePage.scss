@@ -1,0 +1,18 @@
+$background-color: #FFC75F;
+$copliment-color: #E7B355;
+
+#profile {
+  background-color: $background-color;
+  display: flex;
+  flex-direction: column;
+  height: 60vh;
+  align-items: center;
+  justify-self: center;
+  color: white;
+  h1 {
+    margin-top: 20px;
+    flex: 0.2;
+    align-self: center;
+    justify-self: center;
+  }
+}

@@ -12,13 +12,14 @@ const usernameConfig = {
   minLength: 1,
 }
 
-const LoginForm = props => {
 
+const LoginForm = props => {
+  const cookies = new Cookies();
   const navigate = useNavigate();
 
   useEffect(() => {
-    const allCookies = document.cookie;
-    if (allCookies)
+    const session = cookies.get("session");
+    if (session)
       navigate("./translate");
   },[]);
 
@@ -35,8 +36,7 @@ const LoginForm = props => {
     console.log(data);
     //if (!props.user.id)
       //props.addUser(data.username);
-    const newCookie = new Cookies();
-    newCookie.set("session", data.username, {maxAge: 100});
+    cookies.set("session", data.username, {maxAge: 10000});
     navigate("./translate");
   }
 

@@ -1,0 +1,21 @@
+$btn-color: #C72254;
+$background-color: #FFC75F;
+
+#log-out {
+  padding: 10px;
+  height: inherit;
+  color: white;
+  border-bottom: white;
+  border-bottom-style: solid;
+  background-color: $background-color;
+  align-self: center;
+  justify-self: baseline;
+  padding-top: 40px;
+}
+
+#log-out:hover {
+  background-color: white;
+  color: $btn-color;
+  border-bottom: $btn-color;
+  border-bottom-style: solid;
+}

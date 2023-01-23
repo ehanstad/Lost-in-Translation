@@ -1,38 +1,46 @@
 import React, { useEffect } from 'react';
+import { useForm } from 'react-hook-form';
 import { connect } from 'react-redux';
+import { deleteTranslations } from '../../actions/apiActions';
+import PropTypes from 'prop-types';
+import './ProfileHistory.scss';
+
+let keyCounter = 0;
 
 export const ProfileHistory = (props) => {
 
-    useEffect(() => {
-        console.log(props)
-    }, []);
+    const { handleSubmit } = useForm();
 
-    const handleDelete = e => {
-        console.log("click")
-        //e.preventDefault();
+    const onDelete = data => {
+        deleteTranslations();
     }
 
-    const translationHistory = props.user.user.translation.map(translation => (
-        <p>{translation}</p>
-    ));
-
     return (
-        <div>
+        <div id='profile-history'>
             <h3>
                 Profile History
             </h3>
             <div>
-                {translationHistory}
+                {props.user.translations.map(translation => (
+                    <p key={keyCounter++}>{translation}</p>
+                ))}
             </div>
-            <button onClick={handleDelete()}>Delete</button>
+            <form onSubmit={handleSubmit(onDelete)}>
+                <button>Delete history</button>
+            </form>
         </div>
     )
 }
+
+ProfileHistory.protoTypes = {
+    deleteTranslations: PropTypes.func.isRequired,
+    user: PropTypes.object,
+  }
 
 const mapStateToProps = (state) => ({
     user: state.api.user.user,
 });
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = { deleteTranslations };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProfileHistory);

@@ -1,4 +1,4 @@
-import { USER_LOADING, USER_LOADED, ADD_TRANSLATION } from "../actions/types";
+import { USER_LOADING, USER_LOADED, ADD_TRANSLATION, DELETE_TRANSLATIONS } from "../actions/types";
 
 const initialState = {
     user: {
@@ -34,6 +34,18 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 activeTranslation: action.payload,
+            }
+        case DELETE_TRANSLATIONS:
+            console.log("api_reducer");
+            return {
+                ...state,
+                user: {
+                    ...state.user,
+                    user: {
+                        ...state.user.user,
+                        translations: [],
+                    }
+                }
             }
         default:
             return state;
