@@ -1,3 +1,49 @@
+# Lost in Translation
+This application is written in React and uses Redux toolkit as a state manager. It is connected to a API using JSON-server and is hosted in the platform Railway. As styling tool the application uses sass. The application initially used old Redux without Redux toolkit, however the author wanted to learn toolkit so it was changed.
+
+## Features
+This secion will explain the applications features.
+
+### Start page
+As user you are able to create an account by writing a username in the startpage. The other two pages is protected and cannot be accessed without being logged in. 
+
+### Translation page
+In the translation page the user is able to write a text click the button and the translated sign-language symbols will be visible for the user. The text will also be stored in the API.
+
+### Profile page
+In the profile page the user have it´s ten latest translation texts visible and the possibility to delete those as well as logging out from the session.
+
+## File structure
+This secion will explain the applications file structure as well as presenting the components used.
+
+### public
+Contains the `index.hmtl`-file and the images the applicaion uses.
+
+### src
+
+### views
+In the views folder the pages is hold. It generally contains as little logic as possible. The applications has views for start page, profile page, translate page and error page and corresponing scss file.
+
+### components
+Each component has it´s own folder for easier overview of the files. The components are for login: `LoginForm` deals with logic regarding the login, for profile: `LogOut` deals with logic regarding the log out, `ProfileHistory` deals with logic regarding the showing displaying the translate history and the options to delete these and for translate: `TranslateDisplay` deals with logic regarding the dispalying the active translation, `TranslateForm` deals with logic regarding the storing the translation to user, `TranslateHeader`.
+
+### reducers
+
+### Component tree
+
+# TODO
+- change redux to redux-toolkit.
+- fix delete and add fetch calls. 
+- clean db.
+- private routes for /profile and /translate
+- some styling.
+- comment code.
+- complete figma component tree.
+- write readme.
+
+### Author
+Erik Hanstad
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
