@@ -1,9 +1,12 @@
-import React from 'react';
-import LoginForm from '../components/login/LoginForm';
+/**
+ * This component is the view for the start page.
+ */
 import './LoginPage.scss';
+import LoginForm from '../components/login/LoginForm';
+
+import React from 'react';
 
 const LoginPage = () => {
-
 
   return (
     <div id='login'>

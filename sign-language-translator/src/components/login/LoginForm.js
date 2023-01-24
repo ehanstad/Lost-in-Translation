@@ -1,21 +1,22 @@
-import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { useForm } from 'react-hook-form';
-import Cookies from 'universal-cookie';
-import { getUser, addUser } from '../../actions/apiActions';
-import { useNavigate } from 'react-router-dom';
 import './LoginForm.scss';
+import { getUser, addUser } from '../../reducers/apiSlice';
+
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+import Cookies from 'universal-cookie';
 
 const usernameConfig = {
   required: true,
   minLength: 1,
 }
 
-
-const LoginForm = props => {
+const LoginForm = () => {
   const cookies = new Cookies();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const user = useSelector(state => state.api.user);
 
   useEffect(() => {
     const session = cookies.get("session");
@@ -30,14 +31,15 @@ const LoginForm = props => {
     formState: { errors }
   } = useForm();
 
-  const onSubmit = data => {
-    props.getUser(data.username);
-    console.log(props.user);
-    console.log(data);
-    //if (!props.user.id)
-      //props.addUser(data.username);
-    cookies.set("session", data.username, {maxAge: 10000});
-    navigate("./translate");
+  const onSubmit = async data => {
+    dispatch(getUser({ username: data.username }))
+      .then(res => {
+        console.log(res.payload.user.id);
+        if (!res.payload.user.id)
+          dispatch(addUser(data.username));
+        //cookies.set("session", data.username, {maxAge: 10000});
+        navigate("./translate");
+      });
   }
 
   return (
@@ -52,16 +54,4 @@ const LoginForm = props => {
   )
 }
 
-LoginForm.protoTypes = {
-  getUser: PropTypes.func.isRequired,
-  addUser: PropTypes.func.isRequired,
-  user: PropTypes.object,
-}
-
-const mapStateToProps = state => ({
-  user: state.api.user.user,
-});
-
-const mapDispatchToProps = { getUser, addUser };
-
-export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
+export default LoginForm;

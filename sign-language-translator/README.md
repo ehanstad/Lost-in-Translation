@@ -32,8 +32,6 @@ Each component has it´s own folder for easier overview of the files. The compon
 ### Component tree
 
 # TODO
-- change redux to redux-toolkit.
-- fix delete and add fetch calls. 
 - clean db.
 - private routes for /profile and /translate
 - some styling.

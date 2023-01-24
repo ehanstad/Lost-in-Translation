@@ -4,7 +4,7 @@ import TranslateDisplay from '../components/translate/TranslateDisplay';
 import TranslateHeader from '../components/translate/TranslateHeader';
 import './TranslatePage.scss';
 
-const TranslatePage = props => {
+const TranslatePage = () => {
 
   return (
     <div id='translation'>

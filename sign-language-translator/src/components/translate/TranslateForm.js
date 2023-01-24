@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { useForm } from 'react-hook-form';
-import { addTranslation } from '../../actions/apiActions';
 import './TranslateForm.scss';
+import { addTranslation } from '../../reducers/apiSlice';
 
-export const TranslateForm = (props) => {
+import React from 'react';
+import { useForm } from 'react-hook-form';
+import { useDispatch, useSelector } from 'react-redux';
 
+export const TranslateForm = () => {
+  const dispatch = useDispatch();
+  const user = useSelector(state => state.api.user);
   const {
     register,
     handleSubmit,
@@ -14,8 +15,12 @@ export const TranslateForm = (props) => {
   } = useForm();
 
   const onSubmit = data => {
-    props.addTranslation(data.translateText, props.user.user.id);
-    console.log(props);
+    let newTranslations = [...user.translations, data.translateText];
+    dispatch(addTranslation({ 
+      translateText: data.translateText, 
+      id: user.id,
+      translations: newTranslations
+    }));
   }
 
   return (
@@ -32,17 +37,4 @@ export const TranslateForm = (props) => {
   )
 }
 
-TranslateForm.protoTypes = {
-  addTranslation: PropTypes.func.isRequired,
-  user: PropTypes.object,
-  activeTranslation: PropTypes.string,
-}
-
-const mapStateToProps = (state) => ({
-  user: state.api.user,
-  activeTranslation: state.api.activeTranslation,
-});
-
-const mapDispatchToProps = { addTranslation };
-
-export default connect(mapStateToProps, mapDispatchToProps)(TranslateForm);
+export default TranslateForm;

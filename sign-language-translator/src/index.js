@@ -1,10 +1,14 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+/**
+ * The file imports the index file and wraps the aplication with the provider.
+ */
 import './index.scss';
 import App from './App';
 import store from './store.js';
-import { Provider } from 'react-redux';
 import reportWebVitals from './reportWebVitals';
+
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { Provider } from 'react-redux';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

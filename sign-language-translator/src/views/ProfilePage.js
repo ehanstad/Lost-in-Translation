@@ -1,17 +1,22 @@
-import React from 'react';
+/**
+ * This component is the view for the profile page.
+ */
 import './ProfilePage.scss';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import ProfileHistory from '../components/profile/ProfileHistory';
 import LogOut from '../components/profile/LogOut';
 import TranslateHeader from '../components/translate/TranslateHeader'
 
-const ProfilePage = props => {
+import React from 'react';
+import { useSelector } from 'react-redux';
+
+const ProfilePage = () => {
+  const username = useSelector(state => state.api.user.username);
+
   return (
     <>
     <TranslateHeader />
     <div id='profile'>
-      <h1>Hello {props.user.user.username}!</h1>
+      <h1>Hello {username}!</h1>
       <ProfileHistory />
       <LogOut />
     </div>
@@ -19,14 +24,4 @@ const ProfilePage = props => {
   )
 }
 
-ProfilePage.protoTypes = {
-  user: PropTypes.object,
-}
-
-const mapStateToProps = state => ({
-  user: state.api.user,
-});
-
-const mapDispatchToProps = {};
-
-export default connect(mapStateToProps, mapDispatchToProps)(ProfilePage);
+export default ProfilePage;

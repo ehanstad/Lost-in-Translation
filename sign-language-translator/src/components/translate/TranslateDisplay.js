@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import './TranslateDisplay.scss'
+
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 
 const img_url = '/images/';
 let key_counter = 0;
 
-export const TranslateDisplay = props => {
+export const TranslateDisplay = () => {
   const[translations, setTranslations] = useState("");
+  const activeTranslation = useSelector(state => state.api.activeTranslation);
   
   useEffect(() => {
-    console.log(props);
-    setTranslations(props.activeTranslation);
-  },[props.activeTranslation]);
+    setTranslations(activeTranslation);
+  },[activeTranslation]);
   
   const translationImages = Array.from(translations.toLowerCase()).map(char => (
     char.search(/[a-z]/) !== -1 ?
@@ -27,16 +27,4 @@ export const TranslateDisplay = props => {
   )
 }
 
-TranslateDisplay.protoTypes = {
-  user: PropTypes.object,
-  activeTranslation: PropTypes.string,
-}
-
-const mapStateToProps = state => ({
-  user: state.api.user.user,
-  activeTranslation: state.api.activeTranslation,
-});
-
-const mapDispatchToProps = {};
-
-export default connect(mapStateToProps, mapDispatchToProps)(TranslateDisplay);
+export default TranslateDisplay;

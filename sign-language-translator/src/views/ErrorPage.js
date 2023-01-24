@@ -1,3 +1,6 @@
+/**
+ * This is the view for a bad gateway
+ */
 import React from 'react';
 
 const ErrorPage = () => {
