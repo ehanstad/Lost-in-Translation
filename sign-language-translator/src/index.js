@@ -3,7 +3,7 @@
  */
 import './index.scss';
 import App from './App';
-import store from './store.js';
+import store from './reducers/store';
 import reportWebVitals from './reportWebVitals';
 
 import React from 'react';
