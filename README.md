@@ -32,7 +32,7 @@ Each component has it´s own folder for easier overview of the files. The compon
 In this folder is the store and the api reducer the api reducer handles all calls to the api as well as updating the redux states.
 
 ### Component tree
-The component tree was created before the application which explains the differences between the two.
+The component tree was created before the application which explains the differences between the two. The api does not handle the translation into pictures as the tree implies. Translate input and translate button got replaced by translate form. Would the tree be implemented after I would probebly include both the cookie handling and Redux states to make it more clear how it all works together.
 ![Component tree](./public/images/Lost-in-Translation.png)
 
 ### Author
