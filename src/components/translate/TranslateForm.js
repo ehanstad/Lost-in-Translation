@@ -15,7 +15,6 @@ export const TranslateForm = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors }
   } = useForm();
 
   const onSubmit = data => {
@@ -33,7 +32,7 @@ export const TranslateForm = () => {
         <fieldset>
           <input placeholder="Translate" type='text' {...register("translateText")} />
           <button type='submit'>
-            <img id='btn-arrow' src='https://cdn.iconscout.com/icon/free/png-256/arrow-forward-ios-1782295-1514145.png' />
+            <img id='btn-arrow' alt='btn-arrow' src='https://cdn.iconscout.com/icon/free/png-256/arrow-forward-ios-1782295-1514145.png' />
           </button>
         </fieldset>
       </form>

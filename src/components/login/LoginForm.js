@@ -5,7 +5,7 @@ import './LoginForm.scss';
 import { getUser, addUser } from '../../reducers/apiSlice';
 
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'universal-cookie';
@@ -19,12 +19,10 @@ const LoginForm = () => {
   const cookies = new Cookies();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const user = useSelector(state => state.api.user);
 
   const {
     register,
     handleSubmit,
-    formState: { errors }
   } = useForm();
 
   const onSubmit = data => {
@@ -42,7 +40,7 @@ const LoginForm = () => {
       <fieldset>
         <input placeholder="What's your name?" type='text' {...register("username", usernameConfig)} />
         <button type='submit'>
-          <img id='btn-arrow' src='https://cdn.iconscout.com/icon/free/png-256/arrow-forward-ios-1782295-1514145.png' />
+          <img id='btn-arrow' alt='logo' src='https://cdn.iconscout.com/icon/free/png-256/arrow-forward-ios-1782295-1514145.png' />
         </button>
       </fieldset>
     </form>

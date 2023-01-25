@@ -19,7 +19,7 @@ export const TranslateDisplay = () => {
 
   const translationImages = Array.from(translations.toLowerCase()).map(char => (
     char.search(/[a-z]/) !== -1 ?
-      <img src={img_url + char + '.png'} key={key_counter++} className='translate-img' /> :
+      <img alt={char} src={img_url + char + '.png'} key={key_counter++} className='translate-img' /> :
       <br key={key_counter++} />
   ));
 

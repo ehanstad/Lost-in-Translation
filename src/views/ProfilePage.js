@@ -5,21 +5,26 @@ import './ProfilePage.scss';
 import ProfileHistory from '../components/profile/ProfileHistory';
 import LogOut from '../components/profile/LogOut';
 import Header from '../components/Header';
+import { getUser } from '../reducers/apiSlice';
 
 import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'universal-cookie';
 
 const ProfilePage = () => {
   const cookies = new Cookies();
-  const navigate = useNavigate();
   const username = useSelector(state => state.api.user.username);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const session = cookies.get("session");
-    if (!session)
+    if (!session) {
       navigate("../");
+    } else {
+      dispatch(getUser({ username: session }))
+    }
   });
 
   return (
