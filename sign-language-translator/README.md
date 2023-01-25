@@ -33,7 +33,7 @@ In this folder is the store and the api reducer the api reducer handles all call
 
 ### Component tree
 The component tree was created before the application which explains the differences between the two.
-![Component tree](Lost-in-Translation.png)
+![Component tree](/public/images/Lost-in-Translation.png)
 
 # TODO
 - complete figma component tree.
