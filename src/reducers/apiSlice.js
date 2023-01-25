@@ -16,6 +16,8 @@ export const getUser = createAsyncThunk(
     if (res.ok) {
       const user = await res.json();
       return { user: user[0] };
+    } else {
+      alert("Unluckily, we were unable to get user");
     }
   }
 );
@@ -40,6 +42,8 @@ export const addUser = createAsyncThunk(
     if (res.ok) {
       const user = await res.json();
       return { user };
+    } else {
+      alert("Unluckily the user counld not be added");
     }
   }
 );
@@ -67,6 +71,8 @@ export const addTranslation = createAsyncThunk(
         activeTranslation: payload.translateText,
         translations: payload.translations,
       };
+    } else {
+      alert("Unluckily not able to add the tranlation");
     }
   }
 );

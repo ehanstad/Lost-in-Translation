@@ -23,7 +23,6 @@ export const ProfileHistory = () => {
             translateText: "",
         }));
     }
-    console.log(keyCounter);
 
     return (
         <div id='profile-history'>

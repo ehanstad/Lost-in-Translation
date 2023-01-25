@@ -26,7 +26,7 @@ The source folder conatins the root file `index.js` and the root component file 
 In the views folder the pages is hold. It generally contains as little logic as possible. The applications has views for start page, profile page, translate page and error page and corresponing scss file.
 
 ### components
-Each component has it´s own folder for easier overview of the files. The components are for login: `LoginForm` deals with logic regarding the login, for profile: `LogOut` deals with logic regarding the log out, `ProfileHistory` deals with logic regarding the showing displaying the translate history and the options to delete these and for translate: `TranslateDisplay` deals with logic regarding the dispalying the active translation, `TranslateForm` deals with logic regarding the storing the translation to user, `TranslateHeader`.
+Each component has it´s own folder for easier overview of the files. The components are for login: `LoginForm` deals with logic regarding the login, for profile: `LogOut` deals with logic regarding the log out, `ProfileHistory` deals with logic regarding the showing displaying the translate history and the options to delete these and for translate: `TranslateDisplay` deals with logic regarding the dispalying the active translation, `TranslateForm` deals with logic regarding the storing the translation to user. In the session folder the component `SessionHandling` does as the name implies, handling the session, it gets the user from the cookie and dispashes it into the state so the user can reload the page, close the tab and still get the information.
 
 ### reducers
 In this folder is the store and the api reducer the api reducer handles all calls to the api as well as updating the redux states.

@@ -18,7 +18,9 @@ export const Header = () => {
     return (
         <header id='translation-header'>
             <img src='/images/Logo-Hello.png' alt="hello-logo" />
-            <h3>Lost in Traslation</h3>
+            <Link to='../translate'>
+                <h3>Lost in Traslation</h3>
+            </Link>
             <Link to="../profile">
                 <h3>{username}</h3>
             </Link>
