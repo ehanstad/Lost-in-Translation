@@ -15,4 +15,14 @@ $copliment-color: #E7B355;
     align-self: center;
     justify-self: center;
   }
+  img {
+    width: 40%;
+  }
+}
+#profile-body {
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  align-items: center;
+  flex: 0.7;
 }

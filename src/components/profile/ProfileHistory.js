@@ -27,12 +27,12 @@ export const ProfileHistory = () => {
     return (
         <div id='profile-history'>
             <h3>
-                Profile History
+                Here are your latest translations
             </h3>
             <div>
                 {user.translations.map(translation => (
                     keyCounter < 10 ?
-                    <li key={keyCounter++}>{translation}</li> :
+                    <p key={keyCounter++}>{translation}</p> :
                     ""
                 ))}
             </div>

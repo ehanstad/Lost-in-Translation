@@ -1,12 +1,12 @@
 $compliment-color: #E7B355;
-$btn-color: #C72254;
+$btn-color: #845EC2;
 
 #profile-history {
-  flex: 0.6;
+  flex: 0.8;
   color: black;
   align-self: start;
   background-color: $compliment-color;
-  width: 30%;
+  width: 40%;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -15,8 +15,11 @@ $btn-color: #C72254;
   h3 {
     flex: 0.15;
     margin-top: 10px;
-    font-size: 140%;
+    font-size: 150%;
     color: white;
+    border-bottom: white;
+    border-bottom-style: solid;
+    justify-self: center;
   }
   div {
     flex: 0.7;
@@ -41,8 +44,9 @@ $btn-color: #C72254;
     border-bottom: $btn-color;
     border-bottom-style: solid;
   }
-  li {
+  p {
     font-size: 140%;
-    margin-bottom: 5px;
+    margin-bottom: 10%;
+    margin-top: 10%;
   }
 }

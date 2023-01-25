@@ -19,7 +19,10 @@ const ProfilePage = () => {
       <Header />
       <div id='profile'>
         <h1>Hello {username}!</h1>
-        <ProfileHistory />
+        <div id='profile-body'>
+          <ProfileHistory />
+          <img src='/images/Logo.png' alt='logo' />
+        </div>
         <LogOut />
       </div>
     </>
