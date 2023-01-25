@@ -1,15 +1,17 @@
+/**
+ * This component displays the users translation history as well as
+ * handling deletion of the same.
+ */
 import './ProfileHistory.scss';
+import { addTranslation } from '../../reducers/apiSlice';
 
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-import { addTranslation } from '../../reducers/apiSlice';
 
-let keyCounter = 0;
-const api_key = process.env.REACT_APP_API_KEY;
-const api_url = process.env.REACT_APP_API_URL;
 
 export const ProfileHistory = () => {
+    let keyCounter = 0;
     const user = useSelector(state => state.api.user);
     const dispatch = useDispatch();
     const { handleSubmit } = useForm();
@@ -21,6 +23,7 @@ export const ProfileHistory = () => {
             translateText: "",
         }));
     }
+    console.log(keyCounter);
 
     return (
         <div id='profile-history'>
@@ -29,7 +32,9 @@ export const ProfileHistory = () => {
             </h3>
             <div>
                 {user.translations.map(translation => (
-                    <p key={keyCounter++}>{translation}</p>
+                    keyCounter < 10 ?
+                    <li key={keyCounter++}>{translation}</li> :
+                    ""
                 ))}
             </div>
             <form onSubmit={handleSubmit(onDelete)}>

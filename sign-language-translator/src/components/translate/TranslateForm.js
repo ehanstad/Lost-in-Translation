@@ -1,3 +1,7 @@
+/**
+ * This component is responible for the logic when it comes to handling the
+ * translations.
+ */
 import './TranslateForm.scss';
 import { addTranslation } from '../../reducers/apiSlice';
 
@@ -16,8 +20,8 @@ export const TranslateForm = () => {
 
   const onSubmit = data => {
     let newTranslations = [...user.translations, data.translateText];
-    dispatch(addTranslation({ 
-      translateText: data.translateText, 
+    dispatch(addTranslation({
+      translateText: data.translateText,
       id: user.id,
       translations: newTranslations
     }));

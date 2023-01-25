@@ -4,9 +4,19 @@
 import './LoginPage.scss';
 import LoginForm from '../components/login/LoginForm';
 
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Cookies from 'universal-cookie';
 
 const LoginPage = () => {
+  const cookies = new Cookies();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const session = cookies.get("session");
+    if (session)
+      navigate("./translate");
+  });
 
   return (
     <div id='login'>

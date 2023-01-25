@@ -1,3 +1,6 @@
+/**
+ * This component handles the logic regarding the log out
+ */
 import './LogOut.scss';
 
 import React from 'react';
@@ -9,19 +12,19 @@ export const LogOut = () => {
 
   const { handleSubmit } = useForm();
 
-    const cookies = new Cookies();
-    const navigate = useNavigate();
+  const cookies = new Cookies();
+  const navigate = useNavigate();
 
-    const onDelete = () => {
-        const cookie = cookies.remove("session");
-        navigate("../");
-    }
+  const onDelete = () => {
+    cookies.remove("session");
+    navigate("../");
+  }
 
-    return (
-      <form onSubmit={handleSubmit(onDelete)}>
-        <button id='log-out'>Log out</button>
-      </form>
-    )
+  return (
+    <form onSubmit={handleSubmit(onDelete)}>
+      <button id='log-out'>Log out</button>
+    </form>
+  )
 }
 
 export default LogOut;

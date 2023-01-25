@@ -1,7 +1,10 @@
+/**
+ * This component handels all the logic when it comes to the login
+ */
 import './LoginForm.scss';
 import { getUser, addUser } from '../../reducers/apiSlice';
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
@@ -18,26 +21,18 @@ const LoginForm = () => {
   const dispatch = useDispatch();
   const user = useSelector(state => state.api.user);
 
-  useEffect(() => {
-    const session = cookies.get("session");
-    if (session)
-      navigate("./translate");
-  },[]);
-
-
   const {
     register,
     handleSubmit,
     formState: { errors }
   } = useForm();
 
-  const onSubmit = async data => {
+  const onSubmit = data => {
     dispatch(getUser({ username: data.username }))
       .then(res => {
-        console.log(res.payload.user.id);
-        if (!res.payload.user.id)
-          dispatch(addUser(data.username));
-        //cookies.set("session", data.username, {maxAge: 10000});
+        if (res.payload.user === undefined)
+          dispatch(addUser({ username: data.username }));
+        cookies.set("session", data.username, { maxAge: 10000 });
         navigate("./translate");
       });
   }

@@ -15,12 +15,15 @@ $btn-color: #C72254;
   h3 {
     flex: 0.15;
     margin-top: 10px;
+    font-size: 140%;
+    color: white;
   }
   div {
-    flex: 0.5;
+    flex: 0.7;
+    margin-right: 25%;
   }
   form {
-    flex: 0.2;
+    flex: 0.1;
     justify-self: baseline;
   }
   button {
@@ -37,5 +40,9 @@ $btn-color: #C72254;
     color: $btn-color;
     border-bottom: $btn-color;
     border-bottom-style: solid;
+  }
+  li {
+    font-size: 140%;
+    margin-bottom: 5px;
   }
 }

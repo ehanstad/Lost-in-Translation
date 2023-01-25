@@ -1,12 +1,17 @@
+/**
+ * This file is the api slice, including api calls and reducer handling
+ */
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 const api_key = process.env.REACT_APP_API_KEY;
 const api_url = process.env.REACT_APP_API_URL;
 
+/**
+ * This function gets the user from the specific id and adds it to the reducer
+ */
 export const getUser = createAsyncThunk(
   'api/getUser',
   async (payload) => {
-    console.log(payload);
     const res = await fetch(`${api_url}/translations?username=${payload.username}`);
     if (res.ok) {
       const user = await res.json();
@@ -15,6 +20,9 @@ export const getUser = createAsyncThunk(
   }
 );
 
+/**
+ * This function posts a new user to the api and adds it to the reducer
+ */
 export const addUser = createAsyncThunk(
   'api/addUser',
   async (payload) => {
@@ -36,15 +44,11 @@ export const addUser = createAsyncThunk(
   }
 );
 
-export const getTranslations = createAsyncThunk(
-  'api/getTranslations',
-  async (payload) => {
-    const res = await fetch(`${api_url}/translations?username=${payload.username}`);
-    const user = await res.JSON();
-    return { translations: user.translations };
-  }
-);
-
+/**
+ * This function posts a new translation for a specific user and adds it 
+ * to the api and adds it to the reducer as well as setting the new translation
+ * as active.
+ */
 export const addTranslation = createAsyncThunk(
   'api/addTranslation',
   async (payload) => {
@@ -59,8 +63,8 @@ export const addTranslation = createAsyncThunk(
       })
     });
     if (res.ok) {
-      return { 
-        activeTranslation: payload.translateText, 
+      return {
+        activeTranslation: payload.translateText,
         translations: payload.translations,
       };
     }
@@ -77,9 +81,6 @@ export const apiSlice = createSlice({
     },
     isLoading: false,
     activeTranslation: "",
-  },
-  reducers: {
-
   },
   extraReducers: {
     [getUser.fulfilled]: (state, action) => {
@@ -102,16 +103,6 @@ export const apiSlice = createSlice({
     [addUser.rejected]: (state) => {
       state.isLoading = false;
     },
-    [getTranslations.fulfilled]: (state, action) => {
-      state.isLoading = false;
-      state.user.translations = action.payload.translations;
-    },
-    [getTranslations.pending]: (state) => {
-      state.isLoading = true;
-    },
-    [getTranslations.rejected]: (state) => {
-      state.isLoading = false;
-    },
     [addTranslation.fulfilled]: (state, action) => {
       state.isLoading = false;
       state.activeTranslation = action.payload.activeTranslation;
@@ -126,5 +117,4 @@ export const apiSlice = createSlice({
   }
 });
 
-export const { } = apiSlice.actions;
 export default apiSlice.reducer;
