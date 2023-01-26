@@ -30,7 +30,9 @@ export const ProfileHistory = () => {
                 Here are your latest translations
             </h3>
             <div>
-                {user.translations.map(translation => (
+                {user.isLoading ?
+                <span class="loader"></span> :
+                user.translations.map(translation => (
                     keyCounter < 10 ?
                     <p key={keyCounter++}>{translation}</p> :
                     ""

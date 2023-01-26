@@ -12,6 +12,7 @@ let key_counter = 0;
 export const TranslateDisplay = () => {
   const [translations, setTranslations] = useState("");
   const activeTranslation = useSelector(state => state.api.activeTranslation);
+  const isLoading = useSelector(state => state.api.user.isLoading);
 
   useEffect(() => {
     setTranslations(activeTranslation);
@@ -25,7 +26,9 @@ export const TranslateDisplay = () => {
 
   return (
     <div id='translate-display'>
-      {translationImages}
+      {isLoading ?
+      <span class="loader"></span> :
+      translationImages}
     </div>
   )
 }
