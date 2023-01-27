@@ -1,5 +1,5 @@
 # Lost in Translation
-This application is written in React and uses Redux toolkit as a state manager. It is connected to a API using JSON-server and is hosted in the platform Railway. As styling tool the application uses sass. The application initially used old Redux without Redux toolkit, however the author wanted to learn toolkit so it was changed.
+This application is written in React and uses Redux toolkit as a state manager. It is connected to a API using JSON-server and is hosted in the platform Railway. As styling tool the application uses sass. The application initially used old Redux without Redux toolkit, however the author wanted to learn toolkit so it was changed. The application is deployed, with help of the host Vercel.
 
 ## Features
 This secion will explain the applications features.
