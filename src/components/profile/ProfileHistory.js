@@ -31,7 +31,7 @@ export const ProfileHistory = () => {
             </h3>
             <div>
                 {user.isLoading ?
-                <span class="loader"></span> :
+                <span className="loader"></span> :
                 user.translations.map(translation => (
                     keyCounter < 10 ?
                     <p key={keyCounter++}>{translation}</p> :

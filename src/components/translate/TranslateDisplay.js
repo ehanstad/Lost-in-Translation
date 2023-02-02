@@ -12,11 +12,11 @@ let key_counter = 0;
 export const TranslateDisplay = () => {
   const [translations, setTranslations] = useState("");
   const activeTranslation = useSelector(state => state.api.activeTranslation);
-  const isLoading = useSelector(state => state.api.user.isLoading);
+  const isLoading = useSelector(state => state.api.isLoading);
 
   useEffect(() => {
     setTranslations(activeTranslation);
-  }, [activeTranslation]);
+  }, [activeTranslation, isLoading]);
 
   const translationImages = Array.from(translations.toLowerCase()).map(char => (
     char.search(/[a-z]/) !== -1 ?
@@ -26,8 +26,8 @@ export const TranslateDisplay = () => {
 
   return (
     <div id='translate-display'>
-      {isLoading ?
-      <span class="loader"></span> :
+      {isLoading || isLoading === undefined ?
+      <span className="loader"></span> :
       translationImages}
     </div>
   )

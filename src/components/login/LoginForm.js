@@ -28,10 +28,16 @@ const LoginForm = () => {
   const onSubmit = data => {
     dispatch(getUser({ username: data.username }))
       .then(res => {
-        if (res.payload.user === undefined)
-          dispatch(addUser({ username: data.username }));
-        cookies.set("session", data.username, { maxAge: 10000 });
-        navigate("./translate");
+        if (res.payload.user === undefined) {
+          dispatch(addUser({ username: data.username }))
+            .then(() => {
+              cookies.set("session", data.username, { maxAge: 10000 });
+              navigate("./translate");
+            });
+        } else {
+          cookies.set("session", data.username, { maxAge: 10000 });
+          navigate("./translate");
+        }
       });
   }
 
